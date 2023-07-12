@@ -1,0 +1,54 @@
+# This is used as a base configuration for metsim.
+# Note that many variables here are set in the main configuration file
+# Forcings begin here (year-month-day)
+#start: Set in main config file ex. 1970-01-01
+# Forcings end at this date (year-month-day)
+#stop:  Set in main config file ex. 1971-01-01
+# Input and output directories
+#forcing: Set in main config file ex. ./metsim/data/test.nc'
+#domain: Set in main config file ex. ./metsim/data/tiny_domain.nc'
+#state: Set in main config file ex. ./metsim/data/state_nc.nc'
+#out_dir: Set in main config file ex.'./output'
+# Time step in minutes
+# time_step: 60
+out_prefix: 'metsim'
+method: 'mtclim'
+utc_offset: True
+chunks:
+  hru: 1
+forcing_vars:
+#Format is input_name : metsim_name
+  pcp  : 'prec'
+  t_max : 't_max'
+  t_min : 't_min'
+state_vars:
+#Format is input_name : metsim_name
+  pcp  : 'prec'
+  t_max : 't_max'
+  t_min : 't_min'
+domain_vars:
+#Format is input_name : metsim_name
+  latitude  : 'lat'
+  longitude  : 'lon'
+  elevation : 'elev'
+  mask : 'mask'
+constant_vars:
+  wind : 1.5
+out_vars:
+    temp:
+        out_name: 'airtemp'
+        units: 'K'
+    prec:
+        out_name: 'pptrate'
+        units: 'mm s-1'
+    shortwave:
+        out_name: 'SWradAtm'
+    longwave:
+        out_name: 'LWradAtm'
+    spec_humid:
+        out_name: 'spechum'
+    air_pressure:
+        out_name: 'airpres'
+        units: 'kPa'
+    wind:
+        out_name: 'windspd'
