@@ -1,36 +1,38 @@
 
 # This Snakemake file prepares the GMET data for use in 
 from pathlib import Path
+import sys
+sys.path.append('../')
+from scripts import gmet_to_summa_utils as utils
 
-#Set input and output directories
-forcing_dir = config['forcing']['forcing_dir']
-file_tmp_dir = config['forcing']['tmp_forcing_dir']
+# Resolve paths from the configuration file
+config = utils.resolve_paths(config)
 
 #Set the list of forcing files to process
 #The id is the name of the forcing file without the extension
-gmet_forcing_files, = glob_wildcards(Path(forcing_dir,"{id}.nc"))
+gmet_forcing_files, = glob_wildcards(Path(config['gmet_forcing_dir'],"{forcing_file}.nc"))
 
 #This first rule establishes the output files that will be created
 rule gmet_file_prep:
     input:
-        expand(Path(file_tmp_dir,"{id}_prep.nc"), id=gmet_forcing_files)
+        expand(Path(config['gmet_tmp_forcing_dir'],"{forcing_file}_prep.nc"), forcing_file=gmet_forcing_files)
 
 #Add greogrian calendar to the time variable, needed for easymore  
-rule add_gregorian:
+rule add_gregorian_to_nc:
     input:  
-        Path(forcing_dir,"{id}.nc")
+        input_forcing = Path(config['gmet_forcing_dir'],"{id}.nc")
     output: 
-        temp(Path(file_tmp_dir,"{id}_greg.nc"))
+        output_forcing = temp(Path(config['gmet_tmp_forcing_dir'],"{id}_greg.nc"))
     shell: 
-        'ncatted -a "calendar,time,o,c,"gregorian"" {input} {output}'
+        'ncatted -a "calendar,time,o,c,"gregorian"" {input.input_forcing} {output.output_forcing}'
 
 #Process temperature data to create t_max and t_min
 rule add_t_max_and_t_min:
     input: 
-        input_file = Path(file_tmp_dir,"{id}_greg.nc")
+        input_file = Path(config['gmet_tmp_forcing_dir'],"{id}_greg.nc")
     output:
-        temp = temp(Path(file_tmp_dir,"{id}_temp.nc")),
-        output_file =Path(file_tmp_dir,"{id}_prep.nc")
+        temp = temp(Path(config['gmet_tmp_forcing_dir'],"{id}_temp.nc")),
+        output_file = Path(config['gmet_tmp_forcing_dir'],"{id}_prep.nc")
     shell:
         """
         ncap2 -s "t_max = t_mean+0.5+t_range" -A {input.input_file} {output.temp};

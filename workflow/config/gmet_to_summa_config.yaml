@@ -1,56 +1,36 @@
-# Settings for the generation of summa forcing data from GMET
+# Settings for the generation of summa forcing data from gmet forcing
 ---
 base_settings:
   case_name: tuolumne
-  base_working_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne
-  shp_dir: /Users/drc858/Data/TuolumneWork/shp
-  catchment_shp: huc12x.tuolumne.gpkg
-forcing:
-  forcing_type: gmet
-  gmet_forcing: True
-  add_calendar_attr: True
-  forcing_dir: /Users/drc858/Data/gmet_to_summa/gmet
-  tmp_forcing_dir: /Users/drc858/Data/gmet_to_summa/tmp
-  nc_pattern: '*.nc'
-  data_label: tuolumne.01d
-  start_time: 2019-01-01
-  end_time: 2021-12-31
-  start_ens: 1
-  end_ens: 3
-  month_forcing_files: False
-  convert_trange: True
+  working_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne
+input_files:
+  catchment_shp: /Users/drc858/Data/TuolumneWork/shp/huc12x.tuolumne.gpkg
+  attribute_nc: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/settings/attributes.wUShuc12.v2.nc
 gmet:
-  input_var:
+  gmet_forcing_dir: /Users/drc858/Data/gmet_to_summa/gmet
+  gmet_tmp_forcing_dir: /Users/drc858/Data/gmet_to_summa/tmp
+  prep_suffix: '_prep.nc'
+  gmet_input_var:
     - pcp
     - t_max
     - t_min
 easymore:
+  # The forcing shp will be located in the easymore_intersect_dir
   forcing_shp: forcing_shp.shp
-  temp_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/temp
-  intersect_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/intersect
-  output_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/output
-  catchment_hru_id_field: 'HUCIDXint'
-  catchment_lat_id_field: 'CENTROID_Y'
-  catchment_lon_id_field: 'CENTROID_X'
+  easymore_temp_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/temp
+  easymore_intersect_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/intersect
+  easymore_output_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/output
+  catchment_shp_hru_id_field: 'HUCIDXint'
+  catchment_shp_lat_id_field: 'CENTROID_Y'
+  catchment_shp_lon_id_field: 'CENTROID_X'
 metsim:
-  create_domain_from_summa_attr: True
-  subset_domain_from_forcing: True
   metsim_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim
   metsim_input_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim/input
   metsim_output_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim/output
   metsim_base_config: /Users/drc858/GitHub/gmet_to_summa/settings/metsim_base_config.yaml
-  timestep_minutes: 60
-  domain_nc: domain.nc
-  state_nc_pattern: 'state.*.nc'
+  metsim_timestep_minutes: 60
+  metsim_domain_nc: domain.nc
   out_freq: Y
 summa:
   summa_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa
   summa_forcing_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/forcing
-  attr_nc: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/settings/attributes.wUShuc12.v2.nc
-logging:
-  logging: True
-  #Relative to ['general']['base_dir']
-  logging_dir: logs
-  log_file_name: geomet_to_summa_logging
-  #Relative to GitHub base
-  logging_config: ../settings/logger_config.ini
