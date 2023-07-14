@@ -31,8 +31,9 @@ def rename_easymore_output(esmr):
 
 
 def remap_with_easymore(
-    config, input_forcing, input_shp, remap_file, only_create_remap_csv=False, ens_member=None):
+    config, input_forcing, input_shp, remap_file, only_create_remap_csv=False, file_path=None):
 
+    print(f'INPUT FORCING: {input_forcing}')
     # initializing EASYMORE object
     esmr = easymore()
 
@@ -59,12 +60,13 @@ def remap_with_easymore(
     # name of variable time in source netCDF file; should be always time
     esmr.var_time = "time"
     # location where the remapped netCDF file will be saved
-    if ens_member is None:
+    if file_path is None:
         ens_member_str = None
         esmr.output_dir = str(config["easymore_output_dir"]) + "/"
     else:
-        ens_member_str = ens_member.pop()
-        esmr.output_dir = str(config["easymore_output_dir"]) + "/" + ens_member_str + "/"
+        #file_path_str = file_path.pop()
+        ens_member_str = file_path[:3]
+        esmr.output_dir = str(config["easymore_output_dir"] + "/" + ens_member_str + "/")
     # format of the variables to be saved in remapped files,
     # if one format provided it will be expanded to other variables
     esmr.format_list = ["f4"]
@@ -89,4 +91,4 @@ def remap_with_easymore(
         esmr.remap_csv = remap_file
         print('Starting remapping')
         esmr.nc_remapper()
-        rename_easymore_output(esmr,ens_member_str)
+        rename_easymore_output(esmr)

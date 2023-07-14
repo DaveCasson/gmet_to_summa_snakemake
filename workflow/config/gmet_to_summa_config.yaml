@@ -8,7 +8,7 @@ input_files:
   attribute_nc: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/settings/attributes.wUShuc12.v2.nc
 gmet:
   gmet_forcing_dir: /Users/drc858/Data/gmet_to_summa/gmet
-  gmet_tmp_forcing_dir: /Users/drc858/Data/gmet_to_summa/tmp
+  gmet_tmp_forcing_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/tmp
   prep_suffix: '_prep.nc'
   gmet_input_var:
     - pcp

@@ -8,7 +8,7 @@ from scripts import metsim_utils as ms_utils
 config = gts_utils.resolve_paths(config)
 
 # Generate list of forcing files to create wildcards
-input_forcing_list = gts_utils.list_files_in_subdirectory(Path(config['easymore_output_dir']), config['prep_suffix'])
+input_forcing_list = gts_utils.list_files_in_subdirectory(Path(config['easymore_output_dir']))
 
 rule run_metsim:
     input:

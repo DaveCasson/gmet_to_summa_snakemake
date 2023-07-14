@@ -14,11 +14,14 @@ ensemble_list, file_path_list = gts_utils.build_ensemble_list(config['gmet_forci
 
 # Create a list of the temporary forcing files produced in the last workflow
 file_tmp_dir = Path(config['gmet_tmp_forcing_dir'])
-tmp_forcing_files = list(file_tmp_dir.glob('*'))
+# List all files recursively
+file_list = list(file_tmp_dir.rglob('*'))
+# Filter out directories from the file list
+tmp_forcing_files = [file for file in file_list if file.is_file()]
        
 rule remap_gmet_to_shp:
     input:
-        expand(Path(config['easymore_output_dir'],"{file}_prep.nc"), file=file_path_list)
+        expand(Path(config['easymore_output_dir'],"{file}.nc"), file=file_path_list)
 
 # Define rule to run file remapping when remap file exists
 rule create_remap_file:
@@ -33,13 +36,14 @@ rule create_remap_file:
 # Define rule to run file remapping when remap file exists
 rule remap_with_easymore:
     input:
-        input_forcing = Path(file_tmp_dir,"{id}_prep.nc"),
+        input_forcing = Path(file_tmp_dir,"{id}.nc"),
         input_shp = config['catchment_shp'],
         remap_csv = config['remap_file'],
-        ens_str = "{id}"[:3]
     output:
-        output_forcing = Path(config['easymore_output_dir'],"{id}_prep.nc", file=file_path_list)
+        output_forcing = Path(config['easymore_output_dir'],"{id}.nc")
+    params:
+        file_path = "{id}"
     run:
-        remap_forcing_to_shp.remap_with_easymore(config, input.input_forcing,input.input_shp,input.remap_csv,ens=ens_str)
+        remap_forcing_to_shp.remap_with_easymore(config, input.input_forcing,input.input_shp,input.remap_csv,only_create_remap_csv=False,file_path=params.file_path)
 
 

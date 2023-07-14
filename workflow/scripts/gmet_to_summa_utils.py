@@ -52,9 +52,10 @@ def build_ensemble_list(directory):
 
     return ensemble_list, file_path_list
 
-def list_files_in_subdirectory(directory, suffix_to_remove):
+def list_files_in_subdirectory(directory, suffix_to_remove='.nc'):
     path = Path(directory)
     file_paths = [file.relative_to(path).as_posix().replace(suffix_to_remove, "") for file in path.glob('**/*') if file.is_file()]
+
     return file_paths
 
 def update_time_units(input_file, output_file):
