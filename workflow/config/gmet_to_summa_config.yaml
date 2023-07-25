@@ -4,12 +4,11 @@ base_settings:
   case_name: tuolumne
   working_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne
 input_files:
-  catchment_shp: /Users/drc858/Data/TuolumneWork/shp/huc12x.tuolumne.gpkg
-  attribute_nc: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/settings/attributes.wUShuc12.v2.nc
+  catchment_shp: /Users/drc858/Data/summa_snakemake/tuolumne/watershed_tools/results/hru_lev1a_final.gpkg
+  attribute_nc: /Users/drc858/Data/summa_snakemake/tuolumne/summa/settings/attributes.nc
 gmet:
   gmet_forcing_dir: /Users/drc858/Data/gmet_to_summa/gmet
   gmet_tmp_forcing_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/tmp
-  prep_suffix: '_prep.nc'
   gmet_input_var:
     - pcp
     - t_max
@@ -20,9 +19,9 @@ easymore:
   easymore_temp_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/temp
   easymore_intersect_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/intersect
   easymore_output_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/output
-  catchment_shp_hru_id_field: 'HUCIDXint'
-  catchment_shp_lat_id_field: 'CENTROID_Y'
-  catchment_shp_lon_id_field: 'CENTROID_X'
+  catchment_shp_hru_id_field: 'HRU_ID'
+  catchment_shp_lat_id_field: 'latitude'
+  catchment_shp_lon_id_field: 'longitude'
 metsim:
   metsim_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim
   metsim_input_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim/input

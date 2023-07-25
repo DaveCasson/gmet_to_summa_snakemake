@@ -58,6 +58,26 @@ def list_files_in_subdirectory(directory, suffix_to_remove='.nc'):
 
     return file_paths
 
+def return_first_file(directory):
+    #Return first file in a directory
+    directory_path = Path(directory)
+    directory_path.mkdir(parents=True, exist_ok=True)
+    # List all files recursively
+    file_list = list(directory_path.rglob('*'))
+    # Filter out directories from the file list
+    if len(file_list) == 0:
+        first_file = "No file found"
+    else:
+        # Create iterator and extract first file
+        tmp_forcing_files = [file for file in file_list if file.is_file()]
+        first_file = tmp_forcing_files[0]
+        #tmp_forcing_files_iter = iter(tmp_forcing_files)
+        #first_file = next(tmp_forcing_files_iter)
+
+    return first_file
+
+
+
 def update_time_units(input_file, output_file):
     """Update time encoding in netcdf file"""
     

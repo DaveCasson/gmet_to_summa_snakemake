@@ -42,9 +42,9 @@ out_vars:
         out_name: 'pptrate'
         units: 'mm s-1'
     shortwave:
-        out_name: 'SWradAtm'
+        out_name: 'SWRadAtm'
     longwave:
-        out_name: 'LWradAtm'
+        out_name: 'LWRadAtm'
     spec_humid:
         out_name: 'spechum'
     air_pressure:

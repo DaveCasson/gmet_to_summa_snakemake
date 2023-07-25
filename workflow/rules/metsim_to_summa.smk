@@ -34,5 +34,7 @@ rule append_hru_id_and_datastep_to_metsim_output:
         """
         ncks -h -A {input.hru_id_file} {input.input_metsim_file}
         ncks -O -C -x -v hru {input.input_metsim_file} {output.output_metsim_file_temp}
+        ncrename -O -v SWradAtm,SWRadAtm {output.output_metsim_file_temp}
+        ncrename -O -v LWradAtm,LWRadAtm {output.output_metsim_file_temp}
         ncap2 -s "data_step={params.timestep}" {output.output_metsim_file_temp} --append {output.output_metsim_file}
         """

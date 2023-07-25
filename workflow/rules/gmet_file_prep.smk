@@ -2,6 +2,7 @@
 # This Snakemake file prepares the GMET data for use in 
 from pathlib import Path
 import sys
+
 sys.path.append('../')
 from scripts import gmet_to_summa_utils as gts_utils
 
@@ -41,5 +42,3 @@ rule add_t_max_and_t_min:
         ncatted -O -a long_name,t_min,o,c,"estimated daily minimum temperature" {output.temp};
         cp {output.temp} {output.output_file}
         """
-
-#Move 

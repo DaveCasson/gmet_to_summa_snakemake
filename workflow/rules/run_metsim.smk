@@ -17,7 +17,8 @@ rule run_metsim:
 rule generate_metsim_output:
     input:
          metsim_input_forcing = Path(config['metsim_input_dir'],"{id}.nc"),
-         metsim_input_state = Path(config['metsim_input_dir'],"{id}_state.nc")
+         metsim_input_state = Path(config['metsim_input_dir'],"{id}_state.nc"),
+         metsim_input_domain = Path(config["metsim_dir"], config["metsim_domain_nc"])
     output:
         metsim_output_forcing = Path(config['metsim_output_dir'],"{id}.nc")
     run:
