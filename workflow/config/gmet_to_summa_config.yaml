@@ -1,35 +1,31 @@
 # Settings for the generation of summa forcing data from gmet forcing
----
+
+# To initiate a new run, review and update the settings below.
+# Note that all values will be available as a primary key i.e. config['case_name']
+
 base_settings:
   case_name: tuolumne
-  working_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne
+key_directories:
+  gmet_forcing_dir: /Users/drc858/Data/gmet_to_summa/gmet/
+  working_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/
+  summa_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/
+  summa_forcing_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/forcing
 input_files:
   catchment_shp: /Users/drc858/Data/summa_snakemake/tuolumne/watershed_tools/results/hru_lev1a_final.gpkg
   attribute_nc: /Users/drc858/Data/summa_snakemake/tuolumne/summa/settings/attributes.nc
+  metsim_base_config: /Users/drc858/GitHub/gmet_to_summa/settings/metsim_base_config.yaml
+easymore:
+  catchment_shp_hru_id_field: 'HRU_ID'
+  catchment_shp_lat_id_field: 'latitude'
+  catchment_shp_lon_id_field: 'longitude'
+  # The forcing shp will be located in the easymore_intersect_dir
+  forcing_shp: forcing_shp.shp #Default value
+metsim:
+  metsim_timestep_minutes: 60
+  metsim_domain_nc: domain.nc #Default value
+  out_freq: Y
 gmet:
-  gmet_forcing_dir: /Users/drc858/Data/gmet_to_summa/gmet
-  gmet_tmp_forcing_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/tmp
   gmet_input_var:
     - pcp
     - t_max
     - t_min
-easymore:
-  # The forcing shp will be located in the easymore_intersect_dir
-  forcing_shp: forcing_shp.shp
-  easymore_temp_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/temp
-  easymore_intersect_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/intersect
-  easymore_output_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/easymore/output
-  catchment_shp_hru_id_field: 'HRU_ID'
-  catchment_shp_lat_id_field: 'latitude'
-  catchment_shp_lon_id_field: 'longitude'
-metsim:
-  metsim_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim
-  metsim_input_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim/input
-  metsim_output_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/metsim/output
-  metsim_base_config: /Users/drc858/GitHub/gmet_to_summa/settings/metsim_base_config.yaml
-  metsim_timestep_minutes: 60
-  metsim_domain_nc: domain.nc
-  out_freq: Y
-summa:
-  summa_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa
-  summa_forcing_dir: /Users/drc858/Data/gmet_to_summa/Tuolumne/summa/forcing

@@ -24,6 +24,8 @@ rule add_gregorian_to_nc:
         input_forcing = Path(config['gmet_forcing_dir'],"{id}.nc")
     output: 
         output_forcing = temp(Path(config['gmet_tmp_forcing_dir'],"{id}_greg.nc"))
+    group:
+        "gmet_to_summa"
     shell: 
         'ncatted -a "calendar,time,o,c,"gregorian"" {input.input_forcing} {output.output_forcing}'
 
@@ -34,6 +36,8 @@ rule add_t_max_and_t_min:
     output:
         temp = temp(Path(config['gmet_tmp_forcing_dir'],"{ens}","{id}_temp.nc")),
         output_file = Path(config['gmet_tmp_forcing_dir'],"{ens}","{id}.nc")
+    group:
+        "gmet_to_summa"
     shell:
         """
         ncap2 -s "t_max = t_mean+0.5+t_range" -A {input.input_file} {output.temp};

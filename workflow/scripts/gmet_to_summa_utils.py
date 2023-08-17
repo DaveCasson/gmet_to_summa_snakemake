@@ -24,8 +24,21 @@ def resolve_paths(config):
     promoted_config = promote_keys(config)
     config.update(promoted_config)
 
-    # Resolve the path for the input file
+    # Resolve gmet paths
+    config['gmet_tmp_forcing_dir'] = Path(config['working_dir'], 'gmet_tmp')
+
+    # Resolve easymore paths
+    config['easymore_dir'] = Path(config['working_dir'], 'easymore')
+    config['easymore_intersect_dir'] = Path(config['easymore_dir'], 'intersect')
+    config['easymore_temp_dir'] = Path(config['easymore_dir'], 'temp')
+    config['easymore_output_dir'] = Path(config['easymore_dir'], 'output')
+
     config['forcing_shp_path'] = Path(config['easymore_intersect_dir'],config['forcing_shp'])
+
+    # Resolve metsim paths
+    config['metsim_dir'] = Path(config['working_dir'], 'metsim')
+    config['metsim_input_dir'] = Path(config['metsim_dir'], 'input')
+    config['metsim_output_dir'] = Path(config['metsim_dir'], 'output')
 
     # Define the remapping file that is created by easymore
     remap_file_str = config['base_settings']['case_name'] + '_remapping.csv'
@@ -75,7 +88,6 @@ def return_first_file(directory):
         #first_file = next(tmp_forcing_files_iter)
 
     return first_file
-
 
 
 def update_time_units(input_file, output_file):

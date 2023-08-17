@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "gmet-to-summa-snakemake"
+version = "0.1.0"
+description = "Convert gmet forcing data to summa model input files"
+authors = ["David Casson, Andy Wood"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "gmet_to_summa_snakemake"}]
+
+[tool.poetry.dependencies]
+python = "3.8"
+easymore = "^1.0.0"
+metsim = "2.4.1"
+snakemake = "^7.3.8"
+pandas = "0.24.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

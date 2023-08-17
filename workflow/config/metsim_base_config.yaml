@@ -11,44 +11,48 @@
 #out_dir: Set in main config file ex.'./output'
 # Time step in minutes
 # time_step: 60
-out_prefix: 'metsim'
-method: 'mtclim'
-utc_offset: True
+
 chunks:
   hru: 1
-forcing_vars:
-#Format is input_name : metsim_name
-  pcp  : 'prec'
-  t_max : 't_max'
-  t_min : 't_min'
-state_vars:
-#Format is input_name : metsim_name
-  pcp  : 'prec'
-  t_max : 't_max'
-  t_min : 't_min'
-domain_vars:
-#Format is input_name : metsim_name
-  latitude  : 'lat'
-  longitude  : 'lon'
-  elevation : 'elev'
-  mask : 'mask'
+
+forcing_vars:  # Format is input_name : metsim_name
+  pcp: 'prec'
+  t_max: 't_max'
+  t_min: 't_min'
+
+state_vars:  # Format is input_name : metsim_name
+  pcp: 'prec'
+  t_max: 't_max'
+  t_min: 't_min'
+
+domain_vars:  # Format is input_name : metsim_name
+  latitude: 'lat'
+  longitude: 'lon'
+  elevation: 'elev'
+  mask: 'mask'
+
 constant_vars:
-  wind : 1.5
+  wind: 1.5
+
 out_vars:
-    temp:
-        out_name: 'airtemp'
-        units: 'K'
-    prec:
-        out_name: 'pptrate'
-        units: 'mm s-1'
-    shortwave:
-        out_name: 'SWRadAtm'
-    longwave:
-        out_name: 'LWRadAtm'
-    spec_humid:
-        out_name: 'spechum'
-    air_pressure:
-        out_name: 'airpres'
-        units: 'kPa'
-    wind:
-        out_name: 'windspd'
+  temp:
+    out_name: 'airtemp'
+    units: 'K'
+  prec:
+    out_name: 'pptrate'
+    units: 'mm s-1'
+  shortwave:
+    out_name: 'SWRadAtm'
+    units: 'W m-2'
+  longwave:
+    out_name: 'LWRadAtm'
+    units: 'W m-2'
+  spec_humid:
+    out_name: 'spechum'
+    units: 'g g-1'
+  air_pressure:
+    out_name: 'airpres'
+    units: 'Pa'
+  wind:
+    out_name: 'windspd'
+    units: 'm s-1'

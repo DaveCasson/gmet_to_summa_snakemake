@@ -21,6 +21,8 @@ rule generate_metsim_output:
          metsim_input_domain = Path(config["metsim_dir"], config["metsim_domain_nc"])
     output:
         metsim_output_forcing = Path(config['metsim_output_dir'],"{id}.nc")
+    group:
+        "gmet_to_summa"
     run:
         ms = ms_utils.create_metsim_config(config, input.metsim_input_forcing,input.metsim_input_state,output.metsim_output_forcing)
         ms.run()

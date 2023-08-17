@@ -66,7 +66,7 @@ def remap_with_easymore(
     else:
         #file_path_str = file_path.pop()
         ens_member_str = file_path[:3]
-        esmr.output_dir = str(config["easymore_output_dir"] + "/" + ens_member_str + "/")
+        esmr.output_dir = str(config["easymore_output_dir"]) + "/" + ens_member_str + "/"
     # format of the variables to be saved in remapped files,
     # if one format provided it will be expanded to other variables
     esmr.format_list = ["f4"]
