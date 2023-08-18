@@ -12,8 +12,6 @@ config = gts_utils.resolve_paths(config)
 # Read all forcing files and create a list based on the output directory (i.e. ens/filename.nc)
 ensemble_list, file_path_list = gts_utils.build_ensemble_list(config['gmet_forcing_dir'])
 
-#first_forcing_file = gts_utils.return_first_file(config['gmet_tmp_forcing_dir'])
-
 rule remap_gmet_to_shp:
     input:
         expand(Path(config['easymore_output_dir'],"{file}.nc"), file=file_path_list)
@@ -40,5 +38,6 @@ rule remap_with_easymore:
         file_path = "{id}"
     run:
         remap_forcing_to_shp.remap_with_easymore(config, input.input_forcing,input.input_shp,input.remap_csv,only_create_remap_csv=False,file_path=params.file_path)
+
 
 

@@ -33,11 +33,15 @@ rule append_hru_id_and_datastep_to_metsim_output:
         timestep = int(config["metsim_timestep_minutes"]) * 60
     shell:
         """
-        ncks -h -A {input.hru_id_file} {input.input_metsim_file}
+        if ! ncdump -h {input.input_metsim_file} | grep -q "hruId"; then
+            ncks -h -A {input.hru_id_file} {input.input_metsim_file}
+        fi
         ncks -O -C -x -v hru {input.input_metsim_file} {output.output_metsim_file_temp}
-        ncrename -O -v SWradAtm,SWRadAtm {output.output_metsim_file_temp}
-        ncrename -O -v LWradAtm,LWRadAtm {output.output_metsim_file_temp}
+        ncrename -O -v .SWradAtm,SWRadAtm {output.output_metsim_file_temp}
+        ncrename -O -v .LWradAtm,LWRadAtm {output.output_metsim_file_temp}
         ncap2 -s "airpres=airpres*1000" {output.output_metsim_file_temp} {output.output_metsim_file_temp2}
         ncatted -a units,airpres,m,c,"Pa" {output.output_metsim_file_temp2}
         ncap2 -s "data_step={params.timestep}" {output.output_metsim_file_temp2} --append {output.output_metsim_file}
         """
+
+        

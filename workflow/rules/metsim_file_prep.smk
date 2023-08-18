@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 sys.path.append('../')
