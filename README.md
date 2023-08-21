@@ -5,12 +5,12 @@ Converting high-resolution ensemble meterological forcings to summa model input 
 ![Auto-generated Workflow Schematic](https://github.com/DaveCasson/gmet_to_summa_snakemake/blob/main/workflow/reports/gmet_to_summa.png)
 
 ## Table of Contents
-- [Overview](#overview)
-- [Introduction to Snakemake](#introduction_to_snakemake)
-- [Getting Started](#getting_started)
+- [Overview](#brief-overview)
+- [Introduction to Snakemake](#introduction-to-snakemake)
+- [Getting Started](#getting-started)
 - [Acknowledgements](#acknowledgements)
 
-## Introduction
+## Brief Overview
 
 This repository contains a Snakemake workflow for converting GMET meterological forcing data to SUMMA model input files.
 
@@ -57,7 +57,7 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
    ```bash
    python -m venv gmet_to_summa
-   source env/bin/activate  # For Windows, use `env\Scripts\activate`
+   source gmet_to_summa/bin/activate
    ```
 
 3. **Install Dependencies**  
@@ -66,10 +66,10 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
    ```
 4. **Install gmet_to_summa_snakemake as kernel**
 
-```bash
-ipython kernel install --name "gmet_to_summa_snakemake" --user
-```
-6. Install branch of MetSim
+  ```bash
+  ipython kernel install --name "gmet_to_summa_snakemake" --user
+  ```
+6. **Install branch of MetSim**
 
   An branch of MetSim is needed, due to an update in Pandas date time handling. [Details here](https://github.com/UW-Hydro/MetSim/pull/260)
   Navigate to the local directory where the repo will be located. From your terminal, enter:
