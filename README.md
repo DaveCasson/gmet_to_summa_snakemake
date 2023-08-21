@@ -53,14 +53,29 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
 2. **Set Up Virtual Environment (Optional)**  
 
-    Enter the repo directory, and create a virtual environment.
+    The following steps require installation of a virtual environment. Please use whatever environment manager you are used to.
+    Python 3.8 is a minimum requirement (check with `which python`)
+
+    Enter the repo directory, and create a virtual environment. If you have Python 3.8 or higher installed, this is easily done through.
 
    ```bash
    python -m venv gmet_to_summa
    source gmet_to_summa/bin/activate
    ```
+   pyenv is a also a good option. This can be installed from homebrew:
+  ```bash
+   brew install pyenv
 
+   pyenv install 3.9.16
+
+   pyenv virtualenv 3.9.16 gmet_to_summa_snakemake
+
+   pyenv activate gmet_to_summa_snakemake
+   ```
 3. **Install Dependencies**  
+
+  Making sure you are in the repo directory, with the environment activated.
+
    ```bash
    pip install -r requirements.txt
    ```
