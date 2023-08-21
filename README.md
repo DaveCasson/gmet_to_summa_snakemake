@@ -2,7 +2,7 @@
 
 Converting high-resolution ensemble meterological forcings to summa model input using snakemake, easymore and metsim.
 
-![Auto-generated Workflow Schematic]('https://github.com/DaveCasson/gmet_to_summa_snakemake/blob/main/workflow/reports/gmet_to_summa.png')
+![Auto-generated Workflow Schematic](https://github.com/DaveCasson/gmet_to_summa_snakemake/blob/main/workflow/reports/gmet_to_summa.png)
 
 ## Table of Contents
 - [Overview](#overview)
