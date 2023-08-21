@@ -64,6 +64,21 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
    ```bash
    pip install -r requirements.txt
    ```
+4. **Install gmet_to_summa_snakemake as kernel**
+
+```bash
+ipython kernel install --name "gmet_to_summa_snakemake" --user
+```
+6. Install branch of MetSim
+
+  An branch of MetSim is needed, due to an update in Pandas date time handling. [Details here](https://github.com/UW-Hydro/MetSim/pull/260)
+  Navigate to the local directory where the repo will be located. From your terminal, enter:
+
+  `git clone https://github.com/DaveCasson/MetSim`
+
+  Enter the MetSim directory, and with the virtual environment activated
+
+  `pip install .`
 
 4. **Install nco**
 
