@@ -27,7 +27,6 @@ rule append_hru_id_and_datastep_to_metsim_output:
         hru_id_file = Path(config["metsim_dir"], 'hruId.nc')
     output:
         output_metsim_file_temp = temp(Path(config['summa_forcing_dir'],"{id}_temp.nc")),
-        output_metsim_file_temp2 = temp(Path(config['summa_forcing_dir'],"{id}_temp2.nc")),
         output_metsim_file = Path(config['summa_forcing_dir'],"{id}.nc")
     params:
         timestep = int(config["metsim_timestep_minutes"]) * 60
@@ -39,9 +38,7 @@ rule append_hru_id_and_datastep_to_metsim_output:
         ncks -O -C -x -v hru {input.input_metsim_file} {output.output_metsim_file_temp}
         ncrename -O -v .SWradAtm,SWRadAtm {output.output_metsim_file_temp}
         ncrename -O -v .LWradAtm,LWRadAtm {output.output_metsim_file_temp}
-        ncap2 -s "airpres=airpres*1000" {output.output_metsim_file_temp} {output.output_metsim_file_temp2}
-        ncatted -a units,airpres,m,c,"Pa" {output.output_metsim_file_temp2}
-        ncap2 -s "data_step={params.timestep}" {output.output_metsim_file_temp2} --append {output.output_metsim_file}
+        ncap2 -s "data_step={params.timestep}" {output.output_metsim_file_temp} --append {output.output_metsim_file}
         """
 
         

@@ -1,0 +1,31 @@
+# Settings for the test case generation of summa forcing data from gmet forcing
+
+# To initiate a new run, review and update the settings below.
+# Note that all values will be available as a primary key i.e. config['case_name']
+
+base_settings:
+  case_name: test_case
+key_directories:
+  gmet_forcing_dir: ../../test_data/gmet/
+  working_dir: ../../test_data/working_dir/
+  summa_dir: ../../test_data/summa/
+  summa_forcing_dir: ../../test_data/summa/forcing/
+input_files:
+  catchment_shp: ../../test_data/shp/tuolumne_elev_band.gpkg
+  attribute_nc: ../../test_data/summa/settings/attributes.nc
+  metsim_base_config: ../config/metsim_base_config.yaml
+easymore:
+  catchment_shp_hru_id_field: 'HRU_ID'
+  catchment_shp_lat_id_field: 'latitude'
+  catchment_shp_lon_id_field: 'longitude'
+  # The forcing shp will be located in the easymore_intersect_dir
+  forcing_shp: forcing_shp.shp #Default value
+metsim:
+  metsim_timestep_minutes: 60
+  metsim_domain_nc: domain.nc #Default value
+  out_freq: Y
+gmet:
+  gmet_input_var:
+    - pcp
+    - t_max
+    - t_min

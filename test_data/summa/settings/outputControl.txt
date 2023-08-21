@@ -1,0 +1,25 @@
+nSnow                                | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+nSoil                                | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+pptrate                              | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+airtemp                              | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSWE                            | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSnowfall                       | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarRainfall                       | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarThroughfallSnow                | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarThroughfallRain                | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarCanopySublimation              | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarCanopySnowUnloading            | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarCanopyLiqDrainage              | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarCanopyEvaporation              | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarCanopyNetLiqFlux               | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSnowDrainage                   | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSnowSublimation                | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarGroundEvaporation              | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSurfaceRunoff                  | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarInfiltration                   | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarRainPlusMelt                   | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSnowDepth                      | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarSfcMeltPond                    | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarGroundSnowFraction             | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+scalarCanopyWat                      | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0
+

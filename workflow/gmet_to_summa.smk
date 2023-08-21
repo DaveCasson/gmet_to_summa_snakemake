@@ -7,12 +7,11 @@ Original process code: Andy Wood
 Adapted to Snakemake: Dave Casson
 
 '''
-
 from pathlib import Path
 from scripts import gmet_to_summa_utils as utils
 
 # Resolve paths from the configuration file
-config = utils.resolve_paths(config)
+config = utils.resolve_paths(config, log_config = True)
 
 # Read in all local snakemake files and rules
 include: './rules/gmet_file_prep.smk'
