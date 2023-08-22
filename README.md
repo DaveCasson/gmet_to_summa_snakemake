@@ -58,13 +58,17 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
     Enter the repo directory, and create a virtual environment. If you have Python 3.8 or higher installed, this is easily done through.
 
+    Option #1: Using venv directly
+
    ```bash
    python -m venv gmet_to_summa
    source gmet_to_summa/bin/activate
    ```
+   Option #2 Using pyenv
    pyenv is a also a good option. This can be installed from homebrew:
   ```bash
    brew install pyenv
+   brew install pyenv-virtualenv
 
    pyenv install 3.9.16
 
@@ -72,47 +76,66 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
    pyenv activate gmet_to_summa_snakemake
    ```
+
+  Check that the right python environment is activated with `which python`.
+
 3. **Install Dependencies**  
 
-  Making sure you are in the repo directory, with the environment activated.
+  Navigate to the gmet_to_summa_snakemake repo directory, with the environment activated.
 
    ```bash
    pip install -r requirements.txt
    ```
+   There may be an issue with MetSim, which will be addressed later.
+
 4. **Install gmet_to_summa_snakemake as kernel**
 
   ```bash
   ipython kernel install --name "gmet_to_summa_snakemake" --user
   ```
+
 6. **Install branch of MetSim**
 
-  An branch of MetSim is needed, due to an update in Pandas date time handling. [Details here](https://github.com/UW-Hydro/MetSim/pull/260)
-  Navigate to the local directory where the repo will be located. From your terminal, enter:
+  Navigate to your main GitHub directory (i.e. where you put your Git Repo folders) An branch of MetSim is needed, due to an update in Pandas date time handling. [Details here](https://github.com/UW-Hydro/MetSim/pull/260).
+  Navigate to the local directory where the repo will be located.
 
-  `git clone https://github.com/DaveCasson/MetSim`
+  From your terminal, enter:
+
+  `git clone -b develop https://github.com/DaveCasson/MetSim.git`
 
   Enter the MetSim directory, and with the virtual environment activated
 
   `pip install .`
 
-4. **Install nco**
+4. **Install nco and graphviz for visualization**
 
-  If not installed on your maching, [install nco](https://formulae.brew.sh/formula/nco).
+  `brew install nco`
+
+  `brew install graphviz` (optional)
 
 
-4. **Navigate to the Notebooks Directory**  
-   ```bash
-   cd notebooks/
-   ```
+5. **Run simple snakemake workflow**
 
-5. **Start Jupyter Notebook**  
-   ```bash
-   jupyter notebook
-   ```
+  For initial testing of your Python environment, open the write_and_test_rules.ipynb workflow, following instructions below.
 
-Instructions for running the snakemake workflows are located in the notebooks folder.
+  Run the first snakemake file from the Notebook (../rules/gmet_file_prep.smk) from the notebook. This will be running the first few Jupyter notebook cells.
+
+   ***Navigate to the Notebooks Directory***
+     ```bash
+     cd notebooks/
+     ```
+
+  ***Start Jupyter Notebook***
+        ```bash
+        jupyter notebook
+        ```
+     Once this installation is complete, further instructions for running the snakemake workflows are located in the [workflow](https://github.com/DaveCasson/gmet_to_summa_snakemake/tree/main/workflow) directory of this repo.
 
 
 ## Acknowledgements
 
 Gmet data, and an original processing workflow was created by Andy Wood.
+
+Easymore is used to map the gridded forcings to shapefiles.
+
+MetSim is used to generate additional meterological variables.

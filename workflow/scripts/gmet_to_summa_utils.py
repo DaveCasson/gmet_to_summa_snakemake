@@ -124,32 +124,32 @@ def get_time_range(nc_file):
     return start_time, end_time
 
 def generate_gru_start_and_count(sim_size, chunk_size: int=None, num_chunks: int=None):
-        '''
-        Generate a list of gru start and stop times for parallel simulation.
-        Original code: https://github.com/UW-Hydro/pysumma/blob/master/pysumma/distributed.py#L104
-        '''
-        assert not (chunk_size and num_chunks), \
-            "Only specify at most one of `chunk_size` or `num_chunks`!"
-        start, stop = 0, 0
-        if not (chunk_size or num_chunks):
-            chunk_size = 12
-        if chunk_size:
-            sim_truncated = (chunk_size-1) * (sim_size // (chunk_size-1))
-            starts = np.arange(1, sim_truncated+1, chunk_size).astype(int)
-            stops = np.append(starts[1:], sim_size+1)
-            chunks = np.vstack([starts, stops]).T
-        elif num_chunks:
-            chunk_size = np.ceil(sim_size / num_chunks).astype(int)
-            starts = np.arange(1, sim_size, chunk_size)
-            stops = np.append(starts[1:], sim_size+1)
-            chunks = np.vstack([starts, stops]).T
-        
-        gru_chunk_dict = [{'startGRU': start, 'countGRU': stop - start}
-                for start, stop in chunks]
-        
-        gru_chunk_strings = ["G{:02d}-{:02d}".format(item['startGRU'], item['startGRU'] + item['countGRU'] - 1) for item in gru_chunk_dict]
+    '''
+    Generate a list of gru start and stop times for parallel simulation.
+    Original code: https://github.com/UW-Hydro/pysumma/blob/master/pysumma/distributed.py#L104
+    '''
+    assert not (chunk_size and num_chunks), \
+        "Only specify at most one of `chunk_size` or `num_chunks`!"
+    start, stop = 0, 0
+    if not (chunk_size or num_chunks):
+        chunk_size = 12
+    if chunk_size:
+        sim_truncated = (chunk_size-1) * (sim_size // (chunk_size-1))
+        starts = np.arange(1, sim_truncated+1, chunk_size).astype(int)
+        stops = np.append(starts[1:], sim_size+1)
+        chunks = np.vstack([starts, stops]).T
+    elif num_chunks:
+        chunk_size = np.ceil(sim_size / num_chunks).astype(int)
+        starts = np.arange(1, sim_size, chunk_size)
+        stops = np.append(starts[1:], sim_size+1)
+        chunks = np.vstack([starts, stops]).T
+    
+    gru_chunk_dict = [{'startGRU': start, 'countGRU': stop - start}
+            for start, stop in chunks]
+    
+    gru_chunk_strings = ["G{:02d}-{:02d}".format(item['startGRU'], item['startGRU'] + item['countGRU'] - 1) for item in gru_chunk_dict]
 
-        return gru_chunk_strings
+    return gru_chunk_strings
 
 
 def calc_num_grus(attribute_nc):
