@@ -126,16 +126,16 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
      ```
 
   ***Start Jupyter Notebook***
-        ```bash
-        jupyter notebook
-        ```
+      ```bash
+      jupyter notebook
+      ```
      Once this installation is complete, further instructions for running the snakemake workflows are located in the [workflow](https://github.com/DaveCasson/gmet_to_summa_snakemake/tree/main/workflow) directory of this repo.
 
 
 ## Acknowledgements
 
-Gmet data, and an original processing workflow was created by Andy Wood.
+gmet data, and an original processing workflow was created by Andy Wood.
 
-Easymore is used to map the gridded forcings to shapefiles.
+[Easymore](https://github.com/ShervanGharari/EASYMORE/) is used to map the gridded forcings to shapefiles.
 
-MetSim is used to generate additional meterological variables.
+[MetSim](https://github.com/UW-Hydro/MetSim) is used to generate additional meterological variables.
