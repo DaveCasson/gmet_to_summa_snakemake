@@ -58,26 +58,26 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
     Enter the repo directory, and create a virtual environment. If you have Python 3.8 or higher installed, this is easily done through.
 
-  Option #1: Using venv directly
+   ***Option #1: Using venv directly***
 
-     ```bash
-     python -m venv gmet_to_summa
-     source gmet_to_summa/bin/activate
-     ```
-   Option #2 Using pyenv
+
+     `python -m venv gmet_to_summa`
+     `source gmet_to_summa/bin/activate`
+
+   ***Option #2 Using pyenv***
 
    pyenv is a also a good option. This can be installed from homebrew:
 
-    ```bash
-     brew install pyenv
-     brew install pyenv-virtualenv
+  ```bash
+   brew install pyenv
+   brew install pyenv-virtualenv
 
-     pyenv install 3.9.16
+   pyenv install 3.9.16
 
-     pyenv virtualenv 3.9.16 gmet_to_summa_snakemake
+   pyenv virtualenv 3.9.16 gmet_to_summa_snakemake
 
-     pyenv activate gmet_to_summa_snakemake
-     ```
+   pyenv activate gmet_to_summa_snakemake
+   ```
 
      Check that the right python environment is activated with `which python`.
 
@@ -131,7 +131,6 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
      ```bash
      cd notebooks/
      ```
-
     ***Start Jupyter Notebook***
       ```bash
       jupyter notebook
