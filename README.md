@@ -46,7 +46,7 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
 1. **Clone this git repository**
 
-  Navigate to the local directory where the repo will be located. From your terminal, enter:
+   Navigate to the local directory where the repo will be located. From your terminal, enter:
 
   `git clone https://github.com/DaveCasson/gmet_to_summa_snakemake.git`
 
@@ -90,42 +90,42 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
 4. **Install gmet_to_summa_snakemake as kernel**
 
-  ```bash
-  ipython kernel install --name "gmet_to_summa_snakemake" --user
-  ```
+    ```bash
+    ipython kernel install --name "gmet_to_summa_snakemake" --user
+    ```
 
-6. **Install branch of MetSim**
+5. **Install branch of MetSim**
 
-  Navigate to your main GitHub directory (i.e. where you put your Git Repo folders) An branch of MetSim is needed, due to an update in Pandas date time handling. [Details here](https://github.com/UW-Hydro/MetSim/pull/260).
-  Navigate to the local directory where the repo will be located.
+    Navigate to your main GitHub directory (i.e. where you put your Git Repo folders) An branch of MetSim is needed, due to an update in Pandas date time handling. [Details here](https://github.com/UW-Hydro/MetSim/pull/260).
+    Navigate to the local directory where the repo will be located.
 
-  From your terminal, enter:
+    From your terminal, enter:
 
-  `git clone -b develop https://github.com/DaveCasson/MetSim.git`
+    `git clone -b develop https://github.com/DaveCasson/MetSim.git`
 
-  Enter the MetSim directory, and with the virtual environment activated
+    Enter the MetSim directory, and with the virtual environment activated
 
-  `pip install .`
+    `pip install .`
 
-4. **Install nco and graphviz for visualization**
+6. **Install nco and graphviz for visualization**
 
-  `brew install nco`
+    `brew install nco`
 
-  `brew install graphviz` (optional)
+    `brew install graphviz` (optional)
 
 
-5. **Run simple snakemake workflow**
+7. **Run simple snakemake workflow**
 
-  For initial testing of your Python environment, open the write_and_test_rules.ipynb workflow, following instructions below.
+    For initial testing of your Python environment, open the write_and_test_rules.ipynb workflow, following instructions below.
 
-  Run the first snakemake file from the Notebook (../rules/gmet_file_prep.smk) from the notebook. This will be running the first few Jupyter notebook cells.
+    Run the first snakemake file from the Notebook (../rules/gmet_file_prep.smk) from the notebook. This will be running the first few Jupyter notebook cells.
 
-   ***Navigate to the Notebooks Directory***
+     ***Navigate to the Notebooks Directory***
      ```bash
      cd notebooks/
      ```
 
-  ***Start Jupyter Notebook***
+    ***Start Jupyter Notebook***
       ```bash
       jupyter notebook
       ```
