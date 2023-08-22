@@ -48,7 +48,7 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
    Navigate to the local directory where the repo will be located. From your terminal, enter:
 
-  `git clone https://github.com/DaveCasson/gmet_to_summa_snakemake.git`
+    `git clone https://github.com/DaveCasson/gmet_to_summa_snakemake.git`
 
 
 2. **Set Up Virtual Environment (Optional)**  
@@ -58,26 +58,29 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
     Enter the repo directory, and create a virtual environment. If you have Python 3.8 or higher installed, this is easily done through.
 
-    Option #1: Using venv directly
+  Option #1: Using venv directly
 
-   ```bash
-   python -m venv gmet_to_summa
-   source gmet_to_summa/bin/activate
-   ```
+     ```bash
+     python -m venv gmet_to_summa
+     source gmet_to_summa/bin/activate
+     ```
    Option #2 Using pyenv
+
    pyenv is a also a good option. This can be installed from homebrew:
-  ```bash
-   brew install pyenv
-   brew install pyenv-virtualenv
 
-   pyenv install 3.9.16
+    ```bash
+     brew install pyenv
+     brew install pyenv-virtualenv
 
-   pyenv virtualenv 3.9.16 gmet_to_summa_snakemake
+     pyenv install 3.9.16
 
-   pyenv activate gmet_to_summa_snakemake
-   ```
+     pyenv virtualenv 3.9.16 gmet_to_summa_snakemake
 
-  Check that the right python environment is activated with `which python`.
+     pyenv activate gmet_to_summa_snakemake
+     ```
+
+     Check that the right python environment is activated with `which python`.
+
 
 3. **Install Dependencies**  
 
@@ -88,11 +91,13 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
    ```
    There may be an issue with MetSim, which will be addressed later.
 
+
 4. **Install gmet_to_summa_snakemake as kernel**
 
     ```bash
     ipython kernel install --name "gmet_to_summa_snakemake" --user
     ```
+
 
 5. **Install branch of MetSim**
 
@@ -107,11 +112,13 @@ A crucial feature of Snakemake is its ability to automatically determine the seq
 
     `pip install .`
 
+
 6. **Install nco and graphviz for visualization**
 
     `brew install nco`
 
     `brew install graphviz` (optional)
+
 
 
 7. **Run simple snakemake workflow**
